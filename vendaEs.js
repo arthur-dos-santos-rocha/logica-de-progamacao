@@ -6,11 +6,7 @@ let prioridades = [];
 let produtos = []
 let nome= [];
 let option = '';
-//listar
-let entre1 = 0
-let entre2= 0
-let entre3 = 0
-let entre4 = 0 
+
 
 while(option !== 5){
         console.log("\n =========MENU-DE-ESTOQUE=======");
@@ -36,24 +32,34 @@ while(option !== 5){
 
     }
     if (option === "2"){
+        
+    
+//listar
+let entre1 = 0
+let entre2= 0
+let entre3 = 0
+let entre4 = 0 
+
+
+
        if(produtos.length==0){
             console.log("Nenhum produto cadastrado")
             break
             
         
         }
-        else if(prazos <= 2){
-        entre1
+        if(prazos <= 2){
+        entre1++;
 
-        }else if(prazos <=5){
-        entre2;
+        }else if(prazos <= 5){
+        entre2++;
 
-        }else if(prazos <= 6){
-        entre3
+        }else if(prazos <= 10){
+        entre3++;
 
-        }else
-        entre4++
-    
+        }else{
+        entre4++;
+        }
 
     
     
@@ -63,30 +69,33 @@ while(option !== 5){
     console.log("Zona Verde (Baixa)",entre4);
 
     }
-    
     if(option === "3"){
         // mostrar pedidos, itens,Urgente , setor , maior pedido
-        for(i=0; produtos < 0 ; i++)
-        console.log(`Maior Pedido: ${produtos[i]} \n Quantidade pedidas ${produtos[i].max}`)
-    
+        let tlpedido = produtos.length
+        let itens = 0 
+        let urgente = 0
+        let pedido = produtos[0];
+        let maiorPedido = quantidades[0];
 
 
+       for (let i = 0; i < produtos.length; i++) {
+        itens += quantidades[i];
 
+         if (prazos[i] <= 2) {
+                urgente++;
 
+         if (quantidades[i] > maiorPedido) {
+         maiorPedido = quantidades[i];
+         pedido = produtos[i];
+            }
+        }
+    console.log("Total de pedidos:", tlpedido);
+    console.log("Quantidade total de itens:", itens);
+    console.log("Pedidos urgentes:", urgente);
+    console.log("Maior pedido:", pedido ,maiorPedido)
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 
