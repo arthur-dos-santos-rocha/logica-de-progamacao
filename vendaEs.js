@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')();
+
 let prazos = [];
 let quantidades = [];
 let setores = [];
@@ -8,7 +9,7 @@ let nome= [];
 let option = '';
 
 
-while(option !== 5){
+while(option !== "5"){
         console.log("\n =========MENU-DE-ESTOQUE=======");
         console.log("           --Bem Vindo--");
         console.log("1. cadastrar pedido");
@@ -44,7 +45,7 @@ let entre4 = 0
 
        if(produtos.length==0){
             console.log("Nenhum produto cadastrado")
-            break
+            //usar o break
             
         
         }
@@ -76,6 +77,7 @@ let entre4 = 0
         let urgente = 0
         let pedido = produtos[0];
         let maiorPedido = quantidades[0];
+        let setor = setores[0];
 
 
        for (let i = 0; i < produtos.length; i++) {
@@ -83,19 +85,58 @@ let entre4 = 0
 
          if (prazos[i] <= 2) {
                 urgente++;
-
+         }
          if (quantidades[i] > maiorPedido) {
          maiorPedido = quantidades[i];
          pedido = produtos[i];
+        setor = setores[i];
             }
         }
     console.log("Total de pedidos:", tlpedido);
     console.log("Quantidade total de itens:", itens);
     console.log("Pedidos urgentes:", urgente);
-    console.log("Maior pedido:", pedido ,maiorPedido)
+    console.log("Maior pedido:","Produto: ", pedido ,"quantidade: ",maiorPedido)
+    console.log("Setor do maior pedido:", setor); 
     }
+if(option === "4"){
+
+if(produtos.length === 0){
+ console.log("Nenhum pedido cadastrado");
+ }else{
+
+const busquePedido = prompt("nome do produto ");
+   let encontrado = false;
+
+     for(let i = 0; i < produtos.length; i++){
+
+     if(produtos[i] === busquePedido){
+
+        console.log("\nPedido encontrado:");
+       console.log("Produto:", produtos[i]);
+       console.log("Setor:", setores[i]);
+       console.log("Quantidade:", quantidades[i]);
+      console.log("Prazo:", prazos[i]);
+
+     encontrado = true;
+     }
 
     }
+
+  if(!encontrado){
+ console.log("iten não encontrado");
+  }
+ }
+}
+if(option === "5"){
+    console.log("Saindo do sistema...");
+}
+
+
+        
+}
+            
+
+    
 
 
 
